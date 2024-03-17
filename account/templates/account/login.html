@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% block title %}Login Page{% endblock %}
+
+{% block body %}
+
+    {% include "snippets/nav.html" %}
+    
+    <h1>Login Here</h1>
+    
+    <form  method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Login</button>
+        <p>Don't have Accont Create<a href="{% url "register" %}"> Register </a></p>
+    </form>
+
+{% endblock %}

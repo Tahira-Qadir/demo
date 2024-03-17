@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+{% block title %}Register Page{% endblock %}
+
+{% block body %}
+
+    {% include "snippets/nav.html" %}
+
+    <h1>Register Here</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Register</button>
+        <p>Already have Accont<a href="{% url "login" %}"> Login </a></p>
+    </form>
+
+{% endblock %}

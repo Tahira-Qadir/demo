@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>{% block title %}Home Page{% endblock %}</title>
 </head>
 <body>
-    <h3>Wlcome to the Home Page</h3>
+    {% block body %}
+    {% include "snippets/nav.html" %}
+    <p>Welcome to Home</p>
+    {% endblock %}
 </body>
 </html>
