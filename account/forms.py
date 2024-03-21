@@ -1,26 +1,27 @@
 from django import forms
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth import authenticate
-from .models import Account
+from django.contrib.auth.models import User  # django default user import
 
+# Registration Form
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(max_length=60)
     class Meta:
-        model = Account
-        fields = ('email', 'username', 'password1', 'password2')
+        model = User
+        fields = ('email', 'username', 'is_superuser', 'is_active', 'is_staff', 'password1', 'password1')
 
+# Login Form
 class AccountAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
-        model = Account
-        fields = ('email', 'password')
+        model = User
+        fields = ('username', 'password')
 
     def clean(self):
         if self.is_valid():
-            email = self.cleaned_data['email']
+            username = self.cleaned_data['username'] 
             password = self.cleaned_data['password']
-            if not authenticate(email=email, password=password):
+            if not authenticate(username=username, password=password):
                 raise forms.ValidationError("Invalid Login")
 
  

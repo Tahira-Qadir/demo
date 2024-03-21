@@ -1,0 +1,24 @@
+{% extends "home.html" %} 
+{% load static %} 
+{% block description %}Here can create user. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{%block keywords %}add user, user{% endblock %} 
+{% block css %}{% static 'personal/create.css' %}{% endblock %}
+ {% block title %}Add User{% endblock %}
+
+{%block body %} 
+
+{% include "snippets/nav.html" %}
+
+<!-- Add User Page HTML -->
+<form method="post">
+  {% csrf_token %}
+  <h1>Add User</h1>
+  <div>
+    {{ form }}
+  </div>
+  <div class="">
+    <input type="submit" class="btn btn-success" value="Add" />
+  </div>
+</form>
+{% endblock %}

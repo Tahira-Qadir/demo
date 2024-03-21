@@ -1,0 +1,14 @@
+
+form{
+    width: 400px;
+    background-color: #EEEFF1;
+    border: solid 1px #3c404a2f;
+    border-radius: 15px;
+    color: #3d414a;
+    padding: 25px;
+    margin: 50px auto;
+}
+
+h1{
+    text-align: center;
+}
