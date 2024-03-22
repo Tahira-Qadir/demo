@@ -1,12 +1,12 @@
+{% load static %}
+<!--  header -->
 <header>
     <nav class="main-nav">
-        <a href="{% url "home" %}">Home</a>
-        {% if request.user.is_authenticated %}
-        <p>{{ request.user.username }}</p>
+        <a href="{% url 'home' %}" id="selected">Home</a>
         <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
+        <a href="{% url 'show_list' %}">Show User List</a>
+        <a href="{% url 'course_list' %}">Show Courses List</a>
         <a href="{% url "login" %}">Login</a>
-        <a href="{% url "register" %}">Register</a>
-        {% endif %}
+        <a href="{% url 'register' %}">Signup</a>
     </nav>
-</header>
+  </header>

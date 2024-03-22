@@ -1,15 +1,18 @@
-{% extends "home.html" %}
-{% block title %}Register Page{% endblock %}
+{% extends "home.html" %} 
+{% load static %}
 
-{% block body %}
+{% block description %}You can create an account. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{% block keywords %}register, signup, user{% endblock %} 
+{% block css %}{% static 'account/register.css' %}{% endblock %}
+{% block title %}Register Page{% endblock %} 
 
-    {% include "snippets/nav.html" %}
-
-    <h1>Register Here</h1>
+{%block body %}
     <form method="post">
+        <h1>Register Here</h1>
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Register</button>
+        <button type="submit" class="btn btn-primary">Register</button>
         <p>Already have Accont<a href="{% url "login" %}"> Login </a></p>
     </form>
 

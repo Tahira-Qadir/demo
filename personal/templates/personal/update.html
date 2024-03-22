@@ -1,0 +1,24 @@
+
+{% extends "home.html" %} 
+{% load static %}
+
+{% block description %}Here can edit user. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{% block keywords %}edit user, user{% endblock %} 
+{% block css %}{% static 'personal/create.css' %}{% endblock %}
+{% block title %}Edit User{% endblock %} 
+
+{%block body %}
+{%  include "snippets/nav.html" %}
+
+<!-- Edit Modal HTML -->
+<form  method="post">
+    {% csrf_token %}					
+    <h1>Edit User</h1>
+    {{ form }}
+    <div class="">
+        <input type="submit" class="btn btn-info" value="Save">
+    </div>
+</form>
+
+{% endblock %}

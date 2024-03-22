@@ -1,16 +1,19 @@
-{% extends "home.html" %}
-{% block title %}Login Page{% endblock %}
 
-{% block body %}
+{% extends "home.html" %} 
+{% load static %}
 
-    {% include "snippets/nav.html" %}
-    
-    <h1>Login Here</h1>
-    
+{% block description %}You can create an account. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{% block keywords %}login, user{% endblock %} 
+{% block css %}{% static 'account/login.css' %}{% endblock %}
+{% block title %}Login Page{% endblock %} 
+
+{%block body %}
     <form  method="post">
+        <h1>Login Here</h1>
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
         <p>Don't have Accont Create<a href="{% url "register" %}"> Register </a></p>
     </form>
 

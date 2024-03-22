@@ -1,0 +1,24 @@
+{% extends "home.html" %} 
+{% load static %} 
+{% block description %}Here can create Course. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{%block keywords %}add Course, Course{% endblock %} 
+{% block css %}{% static 'personal/create.css' %}{% endblock %}
+ {% block title %}Add Course{% endblock %}
+
+{%block body %} 
+
+{% include "snippets/nav.html" %}
+
+<!-- Add Course Page HTML -->
+<form method="post">
+  {% csrf_token %}
+  <h1>Add Course</h1>
+  <div>
+    {{ form }}
+  </div>
+  <div class="">
+    <input type="submit" class="btn btn-success" value="Add" />
+  </div>
+</form>
+{% endblock %}
