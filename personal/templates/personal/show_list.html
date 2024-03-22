@@ -35,6 +35,7 @@
                     <th>Email</th>
                     <th>Address</th>
                     <th>Phone</th>
+                    <th>Course</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Actions</th>
@@ -49,11 +50,12 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
-                    <td>{{user_role.user.username}}</td>
+                    <td>{{user_role.username}}</td>
                     <td>{{user_role}}</td>
-                    <td>{{user_role.user.email}}</td>
+                    <td>{{user_role.email}}</td>
                     <td>{{user_role.adress}}</td>
                     <td>{{user_role.contact}}</td>
+                    <td>{{user_role.course.title}}</td>
                     <td>{{user_role.created_at}}</td>
                     <td>{{user_role.updated_at}}</td>
                     <td> 

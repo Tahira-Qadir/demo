@@ -1,20 +1,20 @@
 from django import forms
-from django.contrib.auth.forms import  UserCreationForm
+from account.models import Account
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User  # django default user import
+from django.contrib.auth.forms import  UserCreationForm
 
 # Registration Form
 class RegistrationForm(UserCreationForm):
     class Meta:
-        model = User
-        fields = ('email', 'username', 'is_superuser', 'is_active', 'is_staff', 'password1', 'password1')
+        model = Account
+        fields = ('email', 'username', 'password1', 'password2')
 
 # Login Form
 class AccountAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
-        model = User
+        model = Account
         fields = ('username', 'password')
 
     def clean(self):

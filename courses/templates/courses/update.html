@@ -1,0 +1,24 @@
+
+{% extends "home.html" %} 
+{% load static %}
+
+{% block description %}Here can edit Course. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{% block keywords %}edit Course, Course{% endblock %} 
+{% block css %}{% static 'personal/create.css' %}{% endblock %}
+{% block title %}Edit Course{% endblock %} 
+
+{%block body %}
+{%  include "snippets/nav.html" %}
+
+<!-- Edit Modal HTML -->
+<form  method="post">
+    {% csrf_token %}					
+    <h1>Edit Course</h1>
+    {{ form }}
+    <div class="">
+        <input type="submit" class="btn btn-info" value="Save">
+    </div>
+</form>
+
+{% endblock %}

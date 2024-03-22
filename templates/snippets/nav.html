@@ -2,14 +2,11 @@
 <!--  header -->
 <header>
     <nav class="main-nav">
-        {% if request.user.is_authenticated %}
-        <p>Welcome <strong>{{ request.user.username }}</strong></p>
         <a href="{% url 'home' %}" id="selected">Home</a>
         <a href="{% url 'logout' %}">Logout</a>
         <a href="{% url 'show_list' %}">Show User List</a>
-        {% else %}
+        <a href="{% url 'course_list' %}">Show Courses List</a>
         <a href="{% url "login" %}">Login</a>
         <a href="{% url 'register' %}">Signup</a>
-      {% endif %}
     </nav>
   </header>

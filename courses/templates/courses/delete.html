@@ -1,0 +1,27 @@
+{% extends "home.html" %} 
+{% load static %}
+
+{% block description %}Here can delete Course. {% endblock %} 
+{% block robots %}index, follow{% endblock %} 
+{% block keywords %}delete Course, Course{% endblock %} 
+{% block css %}{% static 'personal/create.css' %}{% endblock %}
+{% block title %}Delete Course{% endblock %} 
+
+{%block body %}
+{%  include "snippets/nav.html" %}
+
+<!-- Delete Course Page HTML -->
+
+<form method="post">
+
+    {% csrf_token %}					
+    <h4>Delete Course</h4>
+    <div class="">					
+        <p>Are you sure you want to delete these Records?</p>
+        <p class="text-warning"><small>This action cannot be undone.</small></p>
+    </div>
+    <div class="">
+        <input type="submit" class="btn btn-danger" value="Delete">
+    </div>
+</form>
+{% endblock %}
