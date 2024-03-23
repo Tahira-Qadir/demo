@@ -21,7 +21,7 @@
                     <h2>Manage <b>Users</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="{% url 'create' %}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>						
+                    <a href="{% url 'create_user' %}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>						
                 </div>
             </div>
         </div>
@@ -30,15 +30,19 @@
                 <tr>
                     <th>
                     </th>
+                    <th>Name</th>
                     <th>Role</th>
-                    <th>Description</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Course</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for user_role in user_roles %}
+                {% for user_list in user_lists %}
                 <tr>
                     <td>
                         <span class="custom-checkbox">
@@ -46,13 +50,17 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
-                    <td>{{user_role}}</td>  <!--user_role.role not choose because we call string not integer-->
-                    <td>{{user_role.description}}</td>
-                    <td>{{user_role.created_at}}</td>
-                    <td>{{user_role.updated_at}}</td>
+                    <td>{{user_list.username}}</td>
+                    <td>{{user_list.role}}</td> 
+                    <td>{{user_list.email}}</td>
+                    <td>{{user_list.address}}</td>
+                    <td>{{user_list.contact}}</td>
+                    <td>{{user_list.course}}</td>
+                    <td>{{user_list.date_joined}}</td>
+                    <td>{{user_list.last_login}}</td>
                     <td> 
-                        <a href="{% url 'update' user_id=user_role.id %}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="{% url 'delete' user_id=user_role.id %}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a href="{% url 'update_user' user_id=user_list.id %}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="{% url 'delete_user' user_id=user_list.id %}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
                 {% endfor %}
