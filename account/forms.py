@@ -1,20 +1,29 @@
 from django import forms
-from account.models import Account
+from account.models import User
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import  UserCreationForm
 
 # Registration Form
-class RegistrationForm(UserCreationForm):
+class UserCreationForm(forms.ModelForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
     class Meta:
-        model = Account
-        fields = ('email', 'username', 'password1', 'password2')
-
+        model = User
+        fields = "__all__"
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+        if password1 != password2:
+            raise forms.ValidationError("Passwords don't match")
+        return cleaned_data
+    
 # Login Form
-class AccountAuthenticationForm(forms.ModelForm):
+class UserLoginForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
-        model = Account
+        model = User
         fields = ('username', 'password')
 
     def clean(self):
@@ -23,5 +32,3 @@ class AccountAuthenticationForm(forms.ModelForm):
             password = self.cleaned_data['password']
             if not authenticate(username=username, password=password):
                 raise forms.ValidationError("Invalid Login")
-
- 
